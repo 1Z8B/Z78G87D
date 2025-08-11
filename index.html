@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>discord.gg/uaee</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: url('https://i.pinimg.com/736x/e9/67/50/e96750682aacb7da25092f0ac9c415b5.jpg') no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Courier New', Courier, monospace;
+            color: #ff4d4d;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* وسط عمودي */
+            align-items: center;     /* وسط أفقي */
+            height: 100vh;
+            text-align: center;
+        }
+
+        .image-container img {
+            width: 250px;
+            height: auto;
+            border-radius: 15px;
+            box-shadow: 0 0 25px rgba(255, 0, 0, 0.8);
+        }
+
+        .info {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #ff4d4d;
+            text-shadow: 0px 0px 8px #ff0000, 0px 0px 15px #ff0000, 0px 0px 25px #ff0000;
+            letter-spacing: 3px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 15px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,0,0,0.3);
+            white-space: pre-wrap;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .text {
+            margin-top: 20px;
+            font-size: 2em;
+            font-weight: bold;
+            color: #ff4d4d;
+            text-shadow: 0px 0px 8px #ff0000, 0px 0px 15px #ff0000, 0px 0px 25px #ff0000;
+            letter-spacing: 4px;
+            background: rgba(0,0,0,0.3);
+            padding: 10px 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="image-container">
+        <img src="https://cdn.discordapp.com/attachments/1399458023336054912/1404414847671603323/JTI5LnN2Zy5wbmc.png?ex=689b1ac0&is=6899c940&hm=8e9d606e12c3be93272054fd60d054d1c38fb2128353d7dc7a86371c4ce84d52&" alt="Logo">
+    </div>
+
+    <audio autoplay loop>
+        <source src="حط الاغنيه الي تبيها.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <div class="info" id="ip-info">Loading IP info...</div>
+    <div class="text">discord.gg/uaee</div>
+
+    <script>
+        fetch('https://ipapi.co/json/')
+        .then(response => response.json())
+        .then(data => {
+            let html = `
+                <strong>IP:</strong> ${data.ip} <br>
+                <strong>City:</strong> ${data.city} <br>
+                <strong>Region:</strong> ${data.region} <br>
+                <strong>Country:</strong> ${data.country_name} <br>
+                <strong>Location:</strong> ${data.latitude}, ${data.longitude} <br>
+                <strong>Organization:</strong> ${data.org || 'N/A'} <br>
+                <strong>Timezone:</strong> ${data.timezone}
+            `;
+            document.getElementById('ip-info').innerHTML = html;
+        })
+        .catch(error => {
+            document.getElementById('ip-info').innerHTML = 'Failed to load IP info.';
+        });
+    </script>
+</body>
+</html>
